@@ -10,6 +10,12 @@ greetings = [
 
 name = input("Как тебя зовут?")
 
+special_names = {
+    "Irina": "Мама",
+    "Sergey": "Папа",
+}
+name = special_names.get(name, name)
+
 greeting = random.choice(greetings)
 
 print(greeting.format(name=name))
