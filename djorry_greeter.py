@@ -1,5 +1,15 @@
 import random
 
+moods = [
+    "счастливый", 
+    "грустный", 
+    "весёлый", 
+    "сонный", 
+    "игривый"
+    ]
+
+mood = random.choice(moods)
+
 greetings = [
     "Привет,{name}! Джорри уже бежит к тебе!",
     "Ого, {name}! Джорри уже принёс тебе тапок в подарок!",
@@ -20,3 +30,4 @@ name = special_names.get(name, name)
 greeting = random.choice(greetings)
 
 print(greeting.format(name=name))
+print(f"Сегодня Djorry: {mood}!")
