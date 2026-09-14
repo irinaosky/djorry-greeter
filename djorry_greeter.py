@@ -28,7 +28,8 @@ name = input("Как тебя зовут?")
 special_names = {
     "Irina": "Мама",
     "Sergey": "Папа",
-    "Djorry": "Главный Босс"
+    "Djorry": "Главный Босс",
+    "Victor": "Мой лучший друг"
 }
 name = special_names.get(name, name)
 
