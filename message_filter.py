@@ -56,3 +56,15 @@ for message in messages:
 print("---СТАТИСТИКА СООБЩЕНИЙ---")
 for category in category_counts:
     print(f"{category}: {category_counts[category]}")
+
+total_counted = 0
+
+for category in category_counts:
+    total_counted = total_counted + category_counts[category]
+
+print(f"Всего распределено сообщений: {total_counted}")
+
+if len(messages) == total_counted:
+    print("Все сообщения обработаны")
+else:
+    print("Ошибка: количество сообщений не совпадает")
