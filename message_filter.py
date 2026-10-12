@@ -1,18 +1,29 @@
-def is_important(message):
-    text = message.lower()
+def get_clean_words(message):
+    punctuation = ":!?.,;"
 
-    if "важно" in text or "срочно" in text:
+    for symbol in punctuation:
+        message = message.replace(symbol, " ")
+
+    words = message.lower().split()
+
+    return words
+
+def is_important(message):
+    words = get_clean_words(message)
+
+    if "важно" in words or "срочно" in words:
         return True
     else:
         return False
-def get_category(message):
-    text = message.lower()
 
-    if "срочно" in text:
+def get_category(message):
+    words = get_clean_words(message)
+
+    if "срочно" in words:
         return "Срочно"
-    elif "важно" in text:
+    elif "важно" in words:
         return "Важное"
-    elif "экскурсия" in text:
+    elif "экскурсия" in words:
         return "Мероприятия"
     else:
         return "Обычное"
@@ -21,7 +32,8 @@ messages = [
     "ВАЖНО: завтра родительское собрание",
     "В пятницу состоится экскурсия в музей",
     "СРОЧНО: завтра экскурсия, подтвердить участие",
-    "Всем хороших выходных!"
+    "Всем хороших выходных!",
+    "Это НЕВАЖНОЕ сообщение"
 ]
 important_messages = []
 for message in messages:
