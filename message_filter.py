@@ -27,56 +27,59 @@ def get_category(message):
         return "Мероприятия"
     else:
         return "Обычное"
-messages = [
-    "СРОЧНО:Сегодня математика в 9:00",
-    "ВАЖНО: завтра родительское собрание",
-    "В пятницу состоится экскурсия в музей",
-    "СРОЧНО: завтра экскурсия, подтвердить участие",
-    "Всем хороших выходных!",
-    "Это НЕВАЖНОЕ сообщение"
-]
-important_messages = []
-for message in messages:
-    if is_important(message):
-        important_messages.append(message)
 
-if len(important_messages) == 0:
-    print("Сегодня важных сообщений нет")
-else:
-    print("---ВАЖНЫЕ СООБЩЕНИЯ---")
-    print(f"Найдено важных сообщений: {len(important_messages)}")
+if __name__ == "__main__":
 
-    for message in important_messages:
-        print(message)
+    messages = [
+        "СРОЧНО:Сегодня математика в 9:00",
+        "ВАЖНО: завтра родительское собрание",
+        "В пятницу состоится экскурсия в музей",
+        "СРОЧНО: завтра экскурсия, подтвердить участие",
+        "Всем хороших выходных!",
+        "Это НЕВАЖНОЕ сообщение"
+    ]
+    important_messages = []
+    for message in messages:
+        if is_important(message):
+            important_messages.append(message)
 
-print("=" *40)
+    if len(important_messages) == 0:
+        print("Сегодня важных сообщений нет")
+    else:
+        print("---ВАЖНЫЕ СООБЩЕНИЯ---")
+        print(f"Найдено важных сообщений: {len(important_messages)}")
 
-for message in messages:
-    print(f"Сообщение: {message}")
-    print(f"Категория: {get_category(message)}")
-    print("---")
+        for message in important_messages:
+            print(message)
 
-category_counts = {
-    "Срочно": 0,
-    "Важное": 0,
-    "Мероприятия": 0,
-    "Обычное": 0
-}
-for message in messages:
-    category = get_category(message)
-    category_counts[category] = category_counts[category] + 1
-print("---СТАТИСТИКА СООБЩЕНИЙ---")
-for category in category_counts:
-    print(f"{category}: {category_counts[category]}")
+    print("=" *40)
 
-total_counted = 0
+    for message in messages:
+        print(f"Сообщение: {message}")
+        print(f"Категория: {get_category(message)}")
+        print("---")
 
-for category in category_counts:
-    total_counted = total_counted + category_counts[category]
+    category_counts = {
+        "Срочно": 0,
+        "Важное": 0,
+        "Мероприятия": 0,
+        "Обычное": 0
+    }
+    for message in messages:
+        category = get_category(message)
+        category_counts[category] = category_counts[category] + 1
+    print("---СТАТИСТИКА СООБЩЕНИЙ---")
+    for category in category_counts:
+        print(f"{category}: {category_counts[category]}")
 
-print(f"Всего распределено сообщений: {total_counted}")
+    total_counted = 0
 
-if len(messages) == total_counted:
-    print("Все сообщения обработаны")
-else:
-    print("Ошибка: количество сообщений не совпадает")
+    for category in category_counts:
+        total_counted = total_counted + category_counts[category]
+
+    print(f"Всего распределено сообщений: {total_counted}")
+
+    if len(messages) == total_counted:
+        print("Все сообщения обработаны")
+    else:
+        print("Ошибка: количество сообщений не совпадает")
